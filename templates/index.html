@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3GPP RAG Chatbot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 22px;
+            font-weight: normal;
+        }
+        .header p {
+            font-size: 13px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: white;
+        }
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+        }
+        .message.user {
+            justify-content: flex-end;
+        }
+        .message-content {
+            max-width: 70%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .message.user .message-content {
+            background: #2c3e50;
+            color: white;
+        }
+        .message.bot .message-content {
+            background: #ecf0f1;
+            color: #333;
+        }
+        .message-label {
+            font-size: 11px;
+            color: #888;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        .message.user .message-label {
+            text-align: right;
+        }
+        .loading {
+            display: none;
+            padding: 15px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ddd;
+            border-top-color: #2c3e50;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .input-area {
+            display: flex;
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #ddd;
+            gap: 10px;
+        }
+        #userInput {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+        }
+        #userInput:focus {
+            border-color: #2c3e50;
+        }
+        #sendButton {
+            padding: 10px 20px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        #sendButton:hover {
+            background: #34495e;
+        }
+        #sendButton:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>3GPP Rel-19 Telecom Knowledge Graph Chatbot</h1>
+        <p>Ask me anything about 3GPP Rel-19 specifications, entities, and relationships</p>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+        <div class="message bot">
+            <div>
+                <div class="message-label">Bot</div>
+                <div class="message-content">
+Hello! I'm your 3GPP Rel-19 Telecom Knowledge Graph assistant.
+I have access to 21,540 entities and 31,718 relationships.
+
+Try asking me:
+- "Tell me about UPF"
+- "What is HTTP/2?"
+- "Find all Technology entities"
+- "Show connections for SMF"
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading" id="loading">
+        <span class="loading-spinner"></span> Searching knowledge graph...
+    </div>
+
+    <div class="input-area">
+        <input type="text" id="userInput" placeholder="Ask about 3GPP Rel-19..." autocomplete="off">
+        <button id="sendButton" onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendButton = document.getElementById('sendButton');
+        const loading = document.getElementById('loading');
+
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function addMessage(content, isUser) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message ' + (isUser ? 'user' : 'bot');
+
+            const labelDiv = document.createElement('div');
+            labelDiv.className = 'message-label';
+            labelDiv.textContent = isUser ? 'You' : 'Bot';
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.textContent = content;
+
+            const wrapper = document.createElement('div');
+            wrapper.appendChild(labelDiv);
+            wrapper.appendChild(contentDiv);
+            messageDiv.appendChild(wrapper);
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const query = userInput.value.trim();
+            if (!query) return;
+
+            addMessage(query, true);
+            userInput.value = '';
+            sendButton.disabled = true;
+            loading.style.display = 'block';
+
+            fetch('/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: query })
+            })
+            .then(res => res.json())
+            .then(data => {
+                loading.style.display = 'none';
+                sendButton.disabled = false;
+                if (data.error) {
+                    addMessage('Error: ' + data.error, false);
+                } else {
+                    addMessage(data.answer, false);
+                }
+            })
+            .catch(err => {
+                loading.style.display = 'none';
+                sendButton.disabled = false;
+                addMessage('Error: ' + err.message, false);
+            });
+        }
+    </script>
+</body>
+</html>

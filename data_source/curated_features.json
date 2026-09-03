@@ -1,0 +1,483 @@
+{
+  "features": [
+    {
+      "id": "FEATURE_Rel_19",
+      "name": "3GPP Release 19",
+      "type": "Document",
+      "description": "3GPP Release 19 (Rel-19) is the second release of 5G-Advanced and the last release fully dedicated to 5G. Stage 3/RAN freeze was September 2025, RAN4 March 2026. Rel-19 consists almost exclusively of improvements to features introduced in earlier releases, plus one new feature: Ambient power-enabled IoT. It also serves as a bridge to 6G by hosting two 6G-oriented channel-modeling studies (ISAC and 7-24 GHz).",
+      "summary": "3GPP Release 19 (Rel-19) is the second 5G-Advanced release, finalized with Stage 3/RAN in September 2025 and RAN4 in March 2026. It is the last release fully dedicated to 5G; Rel-20 will start 6G studies and Rel-21 will produce the first 6G normative specs. Almost every Rel-19 work item is an enhancement of a feature introduced in Rel-15 through Rel-18. The single brand-new Rel-19 feature is Ambient power-enabled IoT (AmbientIoT). The headline topic groups are Satellite/NTN Phase 3, IoT and RedCap, AI/ML, Energy Efficiency, Verticals and NPN, Communication Services, XR/AR/Metaverse/Edge Computing, RAN improvements (NR and LTE), CN improvements (SBA, slicing, QoS, multi-access), and Mission Critical. TR 21.919 v19.0.0 is the authoritative release summary.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TR 21.919"]
+    },
+    {
+      "id": "FEATURE_NTN_Ph3",
+      "name": "NTN Phase 3 (NR)",
+      "type": "Concept",
+      "parent": "FEATURE_Satellite_5GSAT_Ph3",
+      "description": "Non-Terrestrial Networks for NR Phase 3 continues the Rel-17/Rel-18 NTN evolution. It improves NR downlink coverage in NTN via repetitions of PDCCH in the common search space, repetitions of PDSCH carrying Msg4 and SIB1, and extended SS/PBCH block periodicity up to 160 ms. Uplink capacity is improved via inter-slot orthogonal cover codes for PUSCH. Multicast/broadcast service support is added when the satellite service area is smaller than the Uu cell coverage area. Regenerative payload architectures with a full gNB on board the satellite are supported, and RedCap / enhanced RedCap operation is added in FR1 NR-NTN bands.",
+      "summary": "NTN for NR Phase 3 is a Rel-19 RAN work item that improves NR satellite operation in three areas: downlink coverage, uplink capacity, and broadcast/multicast support. Downlink enhancements add PDCCH repetitions in the common search space, repetitions PDSCH carrying Msg4 and SIB1, and extend SS/PBCH block periodicity up to 160 ms for initial cell selection in both FR1-NTN and FR2-NTN. Uplink capacity is improved via inter-slot orthogonal cover codes for PUSCH, allowing multiplexing of multiple UEs. For broadcast support, enhanced SIB signalling and core-to-NG-RAN signalling indicate the intended service area when the satellite footprint exceeds the service coverage. Regenerative payload architectures hosting a full gNB on board the satellite are supported, along with RedCap and enhanced RedCap operation in FR1 NR-NTN bands.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TR 38.842", "TR 38.843", "TS 38.300", "TS 38.331"],
+      "subfeatures": ["FEATURE_Regenerative_Payload", "FEATURE_NTN_RedCap"]
+    },
+    {
+      "id": "FEATURE_5GSAT_Ph3",
+      "name": "Satellite Access Phase 3 (5GSAT)",
+      "type": "Concept",
+      "description": "Satellite access Phase 3 introduces five new capabilities: Store-and-Forward (S&F) satellite operation, UE-Satellite-UE direct communication, GNSS-independent operation, positioning enhancements for satellite access, and LAN/service improvements over satellite. Work spans SA1 (requirements), SA2 (architecture, results in TR 23.700-29), SA3 (security), SA5 (charging), SA6 (application enablement, mission critical), CT1/CT3/CT4 (stage 3 protocol enhancements), and RAN2/RAN3 (NTN). Normative service requirements are added to TS 22.261; the requirements related to satellite access are consolidated into one dedicated section to ease future stage-2 and stage-3 work.",
+      "summary": "Satellite Access Phase 3 (5GSAT_Ph3) is a Rel-19 service-requirements and architecture work item that introduces five new capabilities for satellite-enabled 5G systems. (1) Store-and-Forward (S&F) satellite operation provides connectivity when the satellite link to ground is intermittently unavailable, important for delay-tolerant IoT over NGSO satellites. (2) UE-Satellite-UE communication allows direct device-to-device traffic via satellite without going through the ground network. (3) GNSS-independent operation supports UEs without a GNSS receiver or with no GNSS access. (4) Positioning enhancements adapt 3GPP positioning methods to satellite-only UEs. (5) LAN and information-collection use cases over satellite are improved. The work spans SA1, SA2 (architecture study TR 23.700-29), SA3 (security, SCAS 33.926), SA5 (charging), SA6 (application enablement, mission critical), CT1/CT3/CT4 (stage 3), and RAN2/RAN3 (NTN). Normative requirements were added to TS 22.261 and consolidated into one dedicated satellite section.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TR 23.700-29", "TS 22.261", "TS 24.301", "TS 24.546", "TS 24.548", "TS 24.558", "TS 29.502", "TS 29.128", "TS 29.336"]
+    },
+    {
+      "id": "FEATURE_NTN_IoT_Ph3",
+      "name": "NTN for IoT Phase 3 (LTE)",
+      "type": "Concept",
+      "parent": "FEATURE_Satellite_5GSAT_Ph3",
+      "description": "NTN for IoT Phase 3 introduces Store-and-Forward satellite operation using a full eNB as a regenerative payload, uplink capacity improvements via orthogonal cover codes for NPUSCH, and broadcast support for public warning system (PWS) messages over NB-IoT. A new barring mechanism distinguishes S&F-capable UEs from legacy ones, allowing S&F-capable devices to be served while legacy devices are barred. New system information indicates S&F mode and transition timing. Uplink capacity gains come from OCC support on NPUSCH format 1, with slot-level OCC for 15 kHz SCS and symbol-level OCC for 3.75 kHz SCS, plus OCC-based reference signals. Diversity slotted ALOHA is supported for Msg3.",
+      "summary": "NTN for IoT Phase 3 is a Rel-19 work item targeting NB-IoT and LTE-M operation over satellite. It introduces Store-and-Forward (S&F) satellite operation using a full eNB hosted on board as a regenerative payload. A new barring mechanism distinguishes Rel-19 S&F-capable UEs from legacy ones so that S&F-capable devices can be served while legacy devices are barred when needed. New system information indicates whether the serving and neighbouring cells operate in S&F mode and signals the transition timing between S&F and normal operation. A new S1 Removal procedure supports an eNB acting as a regenerative satellite payload. Uplink capacity is improved via orthogonal cover codes (OCC) on NPUSCH format 1: symbol-level OCC for 3.75 kHz subcarrier spacing, slot-level OCC for 15 kHz subcarrier spacing, with OCC-based reference signals. A contention-based Msg3 early-data procedure reduces signalling overhead for RRC_IDLE UEs. Diversity slotted ALOHA is added for Msg3, and a new MAC PDU format for Msg4 multiplexes multiple UEs in a single transmission. PWS messages are supported over NB-IoT broadcast.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 36.300", "TS 36.331", "TS 36.321"]
+    },
+    {
+      "id": "FEATURE_Regenerative_Payload",
+      "name": "Regenerative Satellite Payload",
+      "type": "Technology",
+      "description": "A regenerative satellite payload hosts a full 3GPP gNB or eNB on board the satellite, as opposed to a transparent payload that simply relays the radio signal. Regenerative payloads enable Store-and-Forward operation, regenerative multi-satellite routing, and integration of RAN and CN functions inside the satellite. Rel-19 introduces regenerative payload support as part of NTN Ph3 and 5GSAT Ph3, including architectural studies in TR 23.700-29.",
+      "summary": "A regenerative satellite payload is a satellite-borne base station that hosts the full 3GPP gNB (NR) or eNB (LTE) protocol stack, rather than simply bending the carrier through a transparent transponder. Regenerative payloads enable Store-and-Forward (S&F) operation where the satellite buffers traffic while the feeder link is unavailable, support regenerative multi-satellite routing, and allow RAN and CN functions to be integrated inside the satellite. Rel-19 introduces regenerative payload support as part of NTN for NR Phase 3, 5GSAT Phase 3, and NTN for IoT Phase 3. Architectural work for NR regenerative payloads is captured in TR 23.700-29 and updates to TS 38.300 and TS 38.331.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TR 23.700-29", "TS 38.300"]
+    },
+    {
+      "id": "FEATURE_NTN_RedCap",
+      "name": "RedCap over NTN",
+      "type": "Technology",
+      "description": "RedCap (Reduced Capability NR) support in FR1 NR-NTN bands. Rel-19 adds RedCap and enhanced RedCap device operation in NTN bands so low-complexity NR devices can connect via satellite while keeping their reduced-capability profile.",
+      "summary": "RedCap over NTN is a Rel-19 work item that enables Reduced Capability (RedCap) and enhanced RedCap NR devices to operate in FR1 NR-NTN bands. This allows low-complexity 5G devices to use satellite connectivity while keeping the RedCap profile (reduced bandwidth, fewer antennas, lower transmit power) intact. Specs impacted include TS 38.300 (overall NR description) and TS 38.331 (RRC).",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.331"]
+    },
+    {
+      "id": "FEATURE_Satellite_5GSAT_Ph3",
+      "name": "Satellite / 5GSAT Phase 3",
+      "type": "Concept",
+      "parent": "FEATURE_Rel_19",
+      "description": "The Rel-19 satellite cluster, comprising NTN for NR Phase 3, Satellite Access Phase 3, NTN for IoT Phase 3 (LTE), UAS, Aerial, and Regenerative Payload. 5GSAT was introduced in Rel-17; Rel-19 is its Phase 3 of independent improvements.",
+      "summary": "The Rel-19 satellite cluster is one of the headline Rel-19 topic groups. 5GSAT was introduced in Rel-17 and Rel-19 is its Phase 3, comprising several independent improvements: NTN for NR Phase 3 (NR_NTN_Ph3), Satellite Access Phase 3 (5GSAT_Ph3), NTN for IoT Phase 3 for LTE (IoT_NTN_Ph3), UAS, Aerial, and Regenerative Payload support. New NTN bands are added; positioning, public warning system, and IoT support over NTN are enhanced. Security aspects (5GSAT_Ph3_SEC) and charging aspects (5GSAT_Ph3-CH) are defined separately.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TR 21.919", "TR 23.700-29"]
+    },
+    {
+      "id": "FEATURE_Ambient_IoT",
+      "name": "Ambient power-enabled IoT",
+      "type": "Concept",
+      "description": "Ambient power-enabled IoT (AmbientIoT or A-IoT) is the single brand-new Rel-19 feature. It targets ultra-low-power, ultra-simple IoT devices that harvest energy from the ambient environment (RF backscatter, active transmissions at low power, energy harvesting). Two topologies are considered: a base station connected directly to a tag, and a UE serving as an intermediate node under network control. Work is split between SA/CT (service requirements and stage 3) and RAN (Solutions for Ambient IoT in NR). Frequency range is FR1 FDD.",
+      "summary": "Ambient power-enabled IoT (AmbientIoT, A-IoT) is the single new Rel-19 feature. It targets ultra-low-power, ultra-simple IoT devices that harvest energy from the ambient environment. Two physical-layer modes are in scope: passive backscatter (up to about 1 microWatt) and active transmissions up to a few hundred microWatts. Two topologies are considered: a base station connected directly to a tag, and a user equipment (UE) serving as an intermediate node under network control. Frequency range is FR1 licensed FDD spectrum. The work is split into the AmbientIoT SA/CT work item (service requirements, charging, security) and the Solutions for Ambient IoT in NR RAN work item (physical layer and protocol). It aims to provide a harmonized design for low-end tags that complement existing RFID and barcode technologies with cellular-grade manageability.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TR 21.919"]
+    },
+    {
+      "id": "FEATURE_IoT_RedCap",
+      "name": "IoT and RedCap UE",
+      "type": "Concept",
+      "parent": "FEATURE_Rel_19",
+      "description": "Rel-19 IoT and RedCap improvements include power class 2 RedCap UE operation in NR FR1, NAS-layer overhead reduction for data transfer over Control Plane CIoT, and management aspects of RedCap features. Rel-19 also continues the work on LTE-based IoT optimizations from Rel-10 onwards.",
+      "summary": "Rel-19 IoT and RedCap improvements cover four areas: NR power class 2 RedCap UE in FR1, NAS-layer overhead reduction for data transfer over Control Plane CIoT (CP CIoT), and management aspects of RedCap features. The Rel-19 work continues the series of incremental IoT optimizations that started in Rel-10 to support devices with very specific traffic characteristics (sensors, meters, wearables). RedCap is the 5G radio/device profile that connects some categories of devices efficiently over 5G.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.331", "TS 24.501"]
+    },
+    {
+      "id": "FEATURE_AI_ML_NR_air",
+      "name": "AI/ML for NR air interface",
+      "type": "Technology",
+      "description": "Rel-19 specifies a normative framework for one-sided AI/ML models at the gNB or UE, covering beam management, positioning, and CSI prediction. A generic lifecycle-management framework is defined. Detailed use-case enhancements include beam prediction in the spatial and temporal domains, positioning prediction, and CSI prediction. Two-sided CSI compression and UE training-data collection are deferred to Rel-20. AI/ML for mobility management is studied in RAN2.",
+      "summary": "AI/ML for the NR air interface is the RAN1-led Rel-19 work item that specifies a framework for AI/ML models at the gNB or UE side. The normative scope covers beam management (spatial and temporal beam prediction), positioning prediction, and CSI prediction. A generic lifecycle-management framework handles model training, distribution, monitoring, and switching. Use cases are limited to one-sided models in Rel-19; two-sided CSI compression and UE training-data collection are deferred to Rel-20. AI/ML for mobility management is studied in RAN2 in parallel.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.331", "TS 38.215"]
+    },
+    {
+      "id": "FEATURE_AI_ML_NG_RAN",
+      "name": "AI/ML for NG-RAN enhancements",
+      "type": "Technology",
+      "description": "Rel-19 enhances Rel-18's AI/ML-based NG-RAN architecture work with candidate topics: split architecture support, mobility optimization for NR dual connectivity, multi-hop UE trajectory across gNBs, energy cost prediction, continuous MDT collection across RRC states, AI/ML-based network slicing, and coverage/capacity optimization (cell shaping).",
+      "summary": "Enhancements for AI/ML for NG-RAN is the Rel-19 RAN3-led work item that extends the Rel-18 AI/ML-based NG-RAN architecture. Candidate topics include: split architecture support, mobility optimization for NR dual connectivity (DC), multi-hop UE trajectory prediction across gNBs, energy cost prediction, continuous minimization of drive tests (MDT) collection from the same UE across RRC states, AI/ML-based network slicing (resource allocation optimization), and coverage/capacity optimization (cell shaping). The data-collection enhancements and signalling support defined in Rel-18 are reused.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.401", "TS 28.554"]
+    },
+    {
+      "id": "FEATURE_AI_ML_Management_Ph2",
+      "name": "AI/ML Management Phase 2",
+      "type": "Technology",
+      "description": "Rel-19 second phase of AI/ML management: signaling and protocols essential to the Lifecycle Management (LCM) of AI/ML models, including training, training-data collection, model input/output design, performance monitoring, and enabling/disabling/switching of models. Charging aspects of Ambient AI/ML are also defined.",
+      "summary": "AI/ML Management Phase 2 is the Rel-19 SA5-led work item that defines the signaling and protocols essential to the Lifecycle Management (LCM) of AI/ML models. Functions include model training, training-data collection, input/output design, model performance monitoring, and enabling, disabling, and switching of models. Charging aspects for ambient AI/ML services are also addressed. Rel-19 builds on the Rel-18 management foundations in TS 28.554.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 28.554"]
+    },
+    {
+      "id": "FEATURE_AI_ML",
+      "name": "AI/ML for 5G-Advanced",
+      "type": "Concept",
+      "parent": "FEATURE_Rel_19",
+      "description": "Rel-19 AI/ML cluster comprising AI/ML for NR air interface, AI/ML for NG-RAN enhancements, AI/ML Management Phase 2, AI/ML for mobility (RAN2 study), AI/ML for energy management, AI/ML data collection from UPF, and RAN4 performance requirements for AI/ML in the RAN.",
+      "summary": "Rel-19 AI/ML is one of the headline Rel-19 topic groups. The cluster covers two perspectives: AI for the Network (using AI/ML to optimize network operation) and Network for AI (transporting AI-related data efficiently). Work items include AI/ML for the NR air interface (beam prediction, CSI prediction, positioning), AI/ML for NG-RAN enhancements (mobility optimization, slicing, cell shaping), AI/ML Management Phase 2 (LCM, monitoring, charging), AI/ML for mobility management (RAN2), and RAN4 performance requirements for AI/ML in the RAN.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 28.554"]
+    },
+    {
+      "id": "FEATURE_Network_Energy_Savings",
+      "name": "Network Energy Savings (NR)",
+      "type": "Concept",
+      "description": "Rel-19 enhancements of NR network energy savings. Building on the Rel-18 study, Rel-19 specifies further mechanisms for the gNB and UE to reduce power consumption, including more aggressive always-off signal patterns, cell DTX/DRX extensions, and AI/ML-based energy saving.",
+      "summary": "Enhancements of Network Energy Savings for NR is the Rel-19 RAN work item that continues the Rel-18 NES study. Rel-19 specifies further mechanisms for the gNB and UE to reduce power consumption, including extended always-off signal patterns, cell DTX/DRX enhancements, and AI/ML-based energy-saving strategies. The work complements the LP-WUS/LP-WUR item by adding always-off savings on the network side.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.331"]
+    },
+    {
+      "id": "FEATURE_LP_WUS",
+      "name": "Low-Power Wake-Up Signal / Receiver (LP-WUS/WUR)",
+      "type": "Technology",
+      "description": "Rel-19 specifies a low-power wake-up signal (LP-WUS) and a corresponding low-power wake-up receiver (LP-WUR) at the UE. The LP-WUR monitors a wake-up signal that is much cheaper to decode than the full NR PDCCH; when detected, the main NR receiver is powered up. This dramatically reduces UE power consumption during idle and inactive states. Based on the Rel-18 LP-WUS study.",
+      "summary": "Low-Power Wake-Up Signal / Receiver (LP-WUS/WUR) is a Rel-19 RAN work item. A new low-complexity receiver at the UE (LP-WUR) monitors a wake-up signal (LP-WUS) that is cheaper to decode than the full NR PDCCH. When the LP-WUR detects a wake-up indication, it powers up the main NR receiver. This dramatically reduces UE power consumption during RRC_IDLE and RRC_INACTIVE states, complementing the existing DRX mechanisms. The Rel-19 specification is based on the Rel-18 feasibility study.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.331", "TS 38.215"]
+    },
+    {
+      "id": "FEATURE_Energy_Efficiency",
+      "name": "Energy Efficiency / Energy Saving",
+      "type": "Concept",
+      "parent": "FEATURE_Rel_19",
+      "description": "Rel-19 energy-efficiency cluster: Network Energy Savings for NR, LP-WUS/WUR for NR, Energy Efficiency as Service Criteria, and AI/ML-based energy management.",
+      "summary": "Rel-19 energy efficiency is one of the headline Rel-19 topic groups. The cluster covers Network Energy Savings for NR, LP-WUS/WUR for NR, Energy Efficiency as Service Criteria (introducing energy efficiency as a network-exposed service criterion), and AI/ML-based energy management. It complements the AmbientIoT work, where devices are themselves ultra-low-power.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 28.554"]
+    },
+    {
+      "id": "FEATURE_Verticals_NPN",
+      "name": "Verticals and Non-Public Networks",
+      "type": "Concept",
+      "description": "Rel-19 enhancements of 3GPP Northbound and Application Layer Interfaces and APIs, Service Enabler Architecture, NPN considerations, security for PLMN hosting an NPN, SNPN interconnection, and ProSe support in NPN.",
+      "summary": "Verticals and NPN is the Rel-19 cluster covering the 3GPP Northbound APIs (NBI19), the Service Enabler Architecture Layer (SEAL), Non-Public Network considerations, security for PLMN hosting an NPN, SNPN (Standalone Non-Public Network) interconnection, and ProSe support in NPN. The work makes it easier for verticals (factories, enterprises, public safety) to deploy and interconnect private 5G networks while reusing 3GPP security and management features.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 23.501", "TS 23.502", "TS 33.501"]
+    },
+    {
+      "id": "FEATURE_ProSe_NPN",
+      "name": "ProSe support in NPN",
+      "type": "Technology",
+      "parent": "FEATURE_Verticals_NPN",
+      "description": "ProSe (Proximity Services) support for SNPN and PNI-NPN, including discovery and communication among UEs authorized for the same NPN. Specified in TS 23.304 and related 24/33-series specs.",
+      "summary": "ProSe support in NPN is the Rel-19 work item that enables Proximity Services (device-to-device discovery and communication) within Standalone Non-Public Networks (SNPN) and Public Network Integrated NPN (PNI-NPN). It specifies how UEs authorized for the same NPN can perform ProSe discovery and communication, reusing the existing ProSe framework from TS 23.304.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 23.304", "TS 24.334"]
+    },
+    {
+      "id": "FEATURE_NPN",
+      "name": "Non-Public Networks",
+      "type": "Concept",
+      "description": "Non-Public Networks (NPN) are private 5G networks for enterprises, factories, and other verticals. There are two types: SNPN (Standalone NPN, identified by a PLMN ID and NID pair) and PNI-NPN (Public Network Integrated NPN, a slice of a public PLMN). Rel-19 enhances both with security improvements, SNPN interconnection, and ProSe support.",
+      "summary": "Non-Public Networks (NPN) are private 5G deployments for verticals. Two flavours exist: Standalone NPN (SNPN), identified by a unique PLMN ID + NID pair, and Public Network Integrated NPN (PNI-NPN), which is a network slice of a public PLMN. Rel-19 enhances NPN with security for PLMN hosting NPN, SNPN interconnection, and ProSe support in NPN.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 23.501", "TS 33.501"]
+    },
+    {
+      "id": "FEATURE_Comm_Services_Ph2",
+      "name": "NextGen Real-Time Communication Services Phase 2",
+      "type": "Concept",
+      "description": "Rel-19 Phase 2 of the system architecture for Next Generation Real-time Communication services, including security support and application enablement aspects for MMTel.",
+      "summary": "NextGen Real-Time Communication Services Phase 2 is the Rel-19 work item continuing the Rel-18 RTC architecture. It specifies updates to the system architecture for next-generation real-time communication services, including security support (TS 33.501 enhancements) and application enablement aspects for MMTel (TS 26.512 and related). The work enables richer real-time communication services over 5G.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 23.501", "TS 33.501", "TS 26.512"]
+    },
+    {
+      "id": "FEATURE_XR_AR_Metaverse_Edge",
+      "name": "XR, AR, Metaverse, Edge Computing",
+      "type": "Concept",
+      "description": "Rel-19 Phase 2/3 of XR, AR, Metaverse, and Edge Computing. Includes Localized Mobile Metaverse services, XR media, split rendering over IMS, Edge Computing Phase 3, Edge Computing for Industrial Scenarios, and Edge Computing Considering Operational Needs of Service Hosting Environment.",
+      "summary": "Rel-19 XR, AR, Metaverse, and Edge Computing cluster covers the second/third phases of these topics: Localized Mobile Metaverse services, XR media handling, split rendering over IMS, Edge Computing Phase 3 in 5G Core, Edge Computing for Industrial Scenarios, and Edge Computing considering the operational needs of service hosting environments. Architecture for enabling Edge Applications Phase 3 is also in scope.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 23.501", "TS 23.558", "TS 26.512"]
+    },
+    {
+      "id": "FEATURE_HPUE",
+      "name": "High Power UE (HPUE)",
+      "type": "Technology",
+      "description": "Rel-19 defines high-power UE operation (power class 1.5 or 2) for NR intra-band CA, NR inter-band CA/DC combinations with/without UL, NR FR1 TDD/FDD single band, and high-power UE operation (power class 2) for FWA use cases in a single LTE band. HPUE allows UEs to transmit at higher power for fixed-wireless access and similar scenarios where link budget is critical.",
+      "summary": "High Power UE (HPUE) is a Rel-19 RAN4 work item that defines power class 1.5 and 2 UE operation. NR intra-band carrier aggregation, NR inter-band CA/DC with or without UL, and NR FR1 TDD/FDD single-band high-power UE operation are specified. For FWA use cases, a power class 2 high-power UE is defined for a single LTE band. HPUE is critical for fixed-wireless access and handheld UE scenarios at cell edges.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.101-1", "TS 36.101"]
+    },
+    {
+      "id": "FEATURE_5G_NR_Femto",
+      "name": "5G NR Femto",
+      "type": "Technology",
+      "description": "Rel-19 5G NR Femto enables plug-and-play deployment of small indoor NR access nodes with controlled user access. Enhanced via NEF/UDM support for CAG information and flexible deployment options (including optional Femto GW and local UPF) to improve coverage, offload macro traffic, and support enterprise and private network scenarios.",
+      "summary": "5G NR Femto is the Rel-19 RAN topology work item that enables plug-and-play deployment of small indoor NR access nodes (femtocells, Home eNodeB-equivalent for NR) with controlled user access. The architecture supports CAG (Closed Access Group) information via NEF/UDM, and offers flexible deployment options including an optional Femto Gateway and a local UPF for on-prem traffic breakout. Use cases include enterprise coverage, factory automation, and small-office/home-office (SOHO) deployment.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 23.501"]
+    },
+    {
+      "id": "FEATURE_VMR_Ph2",
+      "name": "Vehicle Mounted Relays Phase 2",
+      "type": "Technology",
+      "description": "VMR Phase 2 extends Rel-18 Vehicle Mounted Relays with additional ULI support and seamless operation over TN/NTN backhaul while remaining transparent to served UEs.",
+      "summary": "Vehicle Mounted Relays Phase 2 is the Rel-19 RAN topology work item that extends Rel-18's VMR. VMR is a UE-based mobile relay that extends NR coverage to nearby users (e.g., passengers inside a vehicle) by relaying their traffic over its own cellular connection to the network. Phase 2 adds additional User Location Information (ULI) reporting and seamless operation over terrestrial (TN) and non-terrestrial (NTN) backhaul, while remaining transparent to the served UEs.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.331"]
+    },
+    {
+      "id": "FEATURE_RAN_Topology",
+      "name": "RAN Topology Enhancements",
+      "type": "Concept",
+      "parent": "FEATURE_Rel_19",
+      "description": "Rel-19 RAN topology cluster: 5G NR Femto, Additional Topological Enhancements for NR (5G_Femto / NR_WAB_5GFemto), and Vehicle Mounted Relays Phase 2 (VMR_Ph2).",
+      "summary": "The Rel-19 RAN topology cluster covers three work items: 5G NR Femto (small indoor access nodes with plug-and-play deployment and CAG support), Additional Topological Enhancements for NR (NR_WAB_5GFemto), and Vehicle Mounted Relays Phase 2 (VMR_Ph2). The work addresses coverage extension and flexible deployment for verticals, enterprises, and mobile scenarios.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300"]
+    },
+    {
+      "id": "FEATURE_NR_MIMO_Ph5",
+      "name": "NR MIMO Phase 5",
+      "type": "Technology",
+      "description": "Rel-19 continues NR MIMO evolution with further enhancements to multi-user MIMO, multi-TRP operation, CSI enhancements for AI/ML integration, and beam management refinements.",
+      "summary": "NR MIMO Phase 5 is the Rel-19 RAN1-led work item continuing the Rel-15 through Rel-18 MIMO evolution series. It adds further enhancements to multi-user MIMO (MU-MIMO), multi-TRP (multiple Transmission/Reception Point) operation, CSI reporting enhancements to feed the AI/ML for NR air interface work item, and beam management refinements. MIMO evolution is a long-running Rel-17/18/19 thread.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.214", "TS 38.215"]
+    },
+    {
+      "id": "FEATURE_NR_Mobility_Ph4",
+      "name": "NR Mobility Enhancements Phase 4",
+      "type": "Technology",
+      "description": "Rel-19 mobility enhancements including L1/L2-centric inter-cell mobility (LTM), multi-node information exchange, and necessary UE reporting for LTM. Built on Rel-18 mobility enhancements.",
+      "summary": "NR Mobility Enhancements Phase 4 is the Rel-19 RAN2-led work item continuing the mobility-evolution series. It introduces L1/L2-centric inter-cell mobility (LTM, Layer 1 / Layer 2 Triggered Mobility) to reduce handover interruption time, multi-node information exchange between gNBs to coordinate mobility, and the UE reporting needed to support LTM. The work is essential for XR and low-latency applications where handover interruption is critical.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.331"]
+    },
+    {
+      "id": "FEATURE_SBFD",
+      "name": "Sub-Band Full Duplex (SBFD)",
+      "type": "Technology",
+      "description": "Rel-19 specifies Sub-Band Full Duplex in TDD systems: a portion of a downlink slot can be converted into an uplink sub-band orthogonal to the remaining downlink sub-bands, enabling simultaneous downlink and uplink in the same slot. Improves uplink coverage and reduces latency for TDD.",
+      "summary": "Sub-Band Full Duplex (SBFD) is the Rel-19 RAN1-led work item continuing the Rel-18 study. In a TDD slot, a frequency portion normally used for downlink is re-purposed as an uplink sub-band, while the remaining frequency portion continues to carry downlink. The UL sub-band is orthogonal to the DL sub-bands, allowing simultaneous transmission and reception in the same slot. SBFD improves uplink coverage (especially at cell edges) and reduces latency for delay-sensitive services.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.214", "TS 38.215"]
+    },
+    {
+      "id": "FEATURE_RAN_Improvements",
+      "name": "NR/LTE RAN Improvements",
+      "type": "Concept",
+      "parent": "FEATURE_Rel_19",
+      "description": "Rel-19 RAN cluster: NR MIMO Phase 5, NR Mobility Phase 4, Sub-Band Full Duplex (SBFD), sidelink enhancements, dual connectivity enhancements, NR/LTE band additions, HPUE, SON/MDT Phase 4, NR BS RF requirement evolution, NR RRM Phase 5, NR demodulation performance Phase 5, and ISAC channel modeling study.",
+      "summary": "The Rel-19 RAN improvements cluster covers NR MIMO Phase 5, NR Mobility Phase 4, SBFD, sidelink enhancements, dual connectivity enhancements, NR and LTE band additions, HPUE, SON/MDT Phase 4, NR base station RF requirement evolution for FR1/FR2, NR RRM Phase 5, NR demodulation performance Phase 5, and the ISAC channel modeling study. These work items constitute the bulk of Rel-19 RAN1/RAN2/RAN3/RAN4 output.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.214"]
+    },
+    {
+      "id": "FEATURE_Network_Slicing",
+      "name": "Network Slicing enhancements",
+      "type": "Technology",
+      "description": "Rel-19 enhancements of network slicing: AI/ML-based resource allocation for slices, slice-aware mobility, and tighter integration with the SBA for slice lifecycle management.",
+      "summary": "Rel-19 network slicing enhancements include AI/ML-based resource allocation for slices (driven by the AI/ML Management Phase 2 work), slice-aware mobility management, and tighter integration of slice lifecycle management with the Service-Based Architecture. The work builds on the Rel-16/17/18 slicing framework.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 23.501", "TS 28.554"]
+    },
+    {
+      "id": "FEATURE_UPEAS_Ph2",
+      "name": "UPF Enhancement for Exposure and SBA Phase 2",
+      "type": "Technology",
+      "description": "Rel-19 UPEAS Phase 2 extends the Service-Based Architecture to the UPF, enabling more service-based interactions for UPF exposure, traffic influence, and packet flow description handling.",
+      "summary": "UPF Enhancement for Exposure and SBA Phase 2 (UPEAS_Ph2) is the Rel-19 work item continuing the Rel-18 UPEAS work. It extends the Service-Based Architecture pattern to the UPF, enabling more service-based interactions for UPF capability exposure, traffic influence, and packet flow description handling. The work makes UPF more programmable and easier to integrate with network analytics, edge computing, and slice-specific traffic handling.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 29.500", "TS 29.502", "TS 29.244"]
+    },
+    {
+      "id": "FEATURE_QoS_Policy",
+      "name": "QoS and Policy enhancements",
+      "type": "Technology",
+      "description": "Rel-19 enhancements of UE Policy (UEP19), Session Management Policy (SMPC19), and related QoS mechanisms.",
+      "summary": "Rel-19 QoS and Policy cluster covers the Enhations of UE Policy (UEP19) and Session Management Policy Control (SMPC19) work items. These add finer-grained UE policy control, slice-specific session management policies, and improved UE-policy delivery over NAS.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 23.503", "TS 24.501"]
+    },
+    {
+      "id": "FEATURE_Multi_Access_Ph2",
+      "name": "Multi-Access enhancements",
+      "type": "Technology",
+      "description": "Rel-19 multi-access enhancements for ATSSS (Access Traffic Steering, Switching, and Splitting) support over more access types and improved policy.",
+      "summary": "Rel-19 multi-access enhancements build on the Rel-16 ATSSS framework, extending Access Traffic Steering, Switching, and Splitting support to more access types and refining policy. This allows a UE to use 3GPP and non-3GPP access simultaneously with finer policy control.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 23.501", "TS 24.193"]
+    },
+    {
+      "id": "FEATURE_Mission_Critical",
+      "name": "Mission Critical, eCall, Emergency",
+      "type": "Concept",
+      "description": "Rel-19 enhancements of Mission Critical Services (MCS) including MCPTT, MCVideo, MCData, eCall over IMS, and Emergency Services. Includes NG-RAN support for mission-critical push-to-talk over satellite.",
+      "summary": "Rel-19 Mission Critical, eCall, and Emergency enhancements cover MCS (MCPTT, MCVideo, MCData) protocols and architecture, eCall over IMS support for next-generation eCall, Emergency Services including NG112, and support for mission-critical communications over satellite. Stage-3 work touches TS 24.379, TS 24.282, and TS 26.512 (MMTel).",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 24.379", "TS 24.282", "TS 26.512"]
+    },
+    {
+      "id": "FEATURE_UAS_Ph3",
+      "name": "Uncrewed Aerial Systems Phase 3",
+      "type": "Technology",
+      "description": "Rel-19 UAS Phase 3: enhanced UAS connectivity, identification, tracking, and command-and-control via the 5G network, building on Rel-17/Rel-18 UAS work.",
+      "summary": "Uncrewed Aerial Systems Phase 3 is the Rel-19 work item continuing the Rel-17 and Rel-18 UAS evolution. It enhances UAS connectivity over 5G, including UAS identification, tracking, command-and-control, and payload communication. Phase 3 adds further enhancements for UAV traffic management, geo-awareness, and seamless operation across multiple cells.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 23.256", "TS 36.300"]
+    },
+    {
+      "id": "FEATURE_Aerial",
+      "name": "Aerial connectivity",
+      "type": "Technology",
+      "description": "Rel-19 enhancements for Aerial UEs (UEs on aerial platforms such as drones). Includes uplink enhancements for aerial channel conditions, interference mitigation for aerial UEs, and support for high-altitude platforms.",
+      "summary": "Rel-19 Aerial connectivity work enhances the support for UEs on aerial platforms (drones, helicopters, lighter-than-air platforms). It includes uplink enhancements tailored to aerial channel conditions, interference mitigation for line-of-sight aerial UEs that can interfere with many terrestrial cells, and support for high-altitude platforms (HAPS).",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 36.300", "TS 38.300"]
+    },
+    {
+      "id": "FEATURE_ISAC_Channel_Model",
+      "name": "ISAC Channel Modeling (6G bridge)",
+      "type": "Concept",
+      "parent": "FEATURE_6G_Bridge_Studies",
+      "description": "Rel-19 ISAC channel modeling study: Integrated Sensing and Communication is one of the six IMT-2030 usage scenarios. The study identifies deployment scenarios for ISAC and defines channel models for sensing using existing 3GPP channel models as a starting point. Considers radar cross-section, mobility, clutter patterns, and spatial consistency.",
+      "summary": "ISAC Channel Modeling is a Rel-19 6G bridge study that supports Integrated Sensing and Communication, one of the six IMT-2030 usage scenarios defined by ITU-R. The study identifies ISAC deployment scenarios and defines channel models for sensing, building on existing 3GPP channel models as a starting point. The new channel model must handle radar cross-section of sensing targets, mobility patterns, clutter patterns, and spatial consistency. The results feed into Rel-20 6G studies.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TR 38.843"]
+    },
+    {
+      "id": "FEATURE_7_24GHz_Channel_Model",
+      "name": "7-24 GHz Channel Modeling (6G bridge)",
+      "type": "Concept",
+      "parent": "FEATURE_6G_Bridge_Studies",
+      "description": "Rel-19 7-24 GHz channel modeling study. 7.125-8.4 GHz and 14.8-15.35 GHz were agreed at WRC-23 as agenda items for WRC-27 and are likely 6G candidate frequencies. The work checks applicability of existing 5G channel models to 7-24 GHz and adds extensions for near-field effects and spatial non-stationarity that matter at higher frequencies with larger antenna arrays.",
+      "summary": "7-24 GHz Channel Modeling is a Rel-19 6G bridge study. The 7.125-8.4 GHz and 14.8-15.35 GHz bands were agreed at WRC-23 as agenda items for WRC-27 and are likely candidate frequencies for 6G. The study validates existing 3GPP channel models (originally defined for sub-7 GHz) against measurement data at these higher frequencies and, if necessary, extends them to account for near-field effects and spatial non-stationarity that become significant with the larger antenna arrays used at higher frequencies. Results feed Rel-20 6G studies.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TR 38.901"]
+    },
+    {
+      "id": "FEATURE_6G_Bridge_Studies",
+      "name": "6G Bridge Studies",
+      "type": "Concept",
+      "parent": "FEATURE_Rel_19",
+      "description": "Rel-19 hosts two 6G bridge studies: ISAC channel modeling and 7-24 GHz channel modeling. Rel-19 is the last release fully dedicated to 5G; Rel-20 will start normative 6G studies, and Rel-21 (no earlier than March 2029) will produce the first 6G technical specifications for IMT-2030 submission before 2030.",
+      "summary": "Rel-19 hosts two 6G bridge studies: ISAC channel modeling and 7-24 GHz channel modeling. These two studies are critical for laying the foundation for 6G standardization at a later stage. Rel-19 is the last release fully dedicated to 5G. Rel-20 will host the first 6G studies (5G-Advanced continues in parallel in Rel-20 with an 18-month duration). Rel-21, with ASN.1/OpenAPI freeze no earlier than March 2029, will produce the first set of 3GPP 6G technical specifications for IMT-2030 submission before 2030.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TR 38.843", "TR 38.901"],
+      "subfeatures": ["FEATURE_ISAC_Channel_Model", "FEATURE_7_24GHz_Channel_Model"]
+    },
+    {
+      "id": "FEATURE_Sidelink",
+      "name": "Sidelink and Proximity",
+      "type": "Technology",
+      "description": "Rel-19 sidelink enhancements including NR Sidelink Intra-band Carrier Aggregation in the ITS band, and continued evolution of ProSe and PC5 reference point.",
+      "summary": "Rel-19 sidelink work covers NR Sidelink Intra-band Carrier Aggregation in the Intelligent Transport Systems (ITS) band, and continued evolution of Proximity Services (ProSe) and the PC5 reference point. Sidelink supports V2X, public safety, and commercial device-to-device use cases.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 23.304"]
+    },
+    {
+      "id": "FEATURE_Dual_Connectivity",
+      "name": "NR/LTE Dual Connectivity enhancements",
+      "type": "Technology",
+      "description": "Rel-19 enhancements for NR-DC (NR-NR Dual Connectivity), EN-DC (E-UTRA-NR Dual Connectivity), and MR-DC (Multi-Radio Dual Connectivity). AI/ML for mobility optimization in DC is part of AI/ML for NG-RAN enhancements.",
+      "summary": "Rel-19 dual connectivity enhancements cover NR-NR DC, E-UTRA-NR EN-DC, and Multi-Radio DC (MR-DC). Dual connectivity allows a UE to be connected to two radio nodes (a master and a secondary) for capacity, mobility, and coverage gains. AI/ML-based mobility optimization in DC is studied under AI/ML for NG-RAN enhancements.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 37.340", "TS 38.300"]
+    },
+    {
+      "id": "FEATURE_Common_API_Ph3",
+      "name": "Common API Framework (CAPIF) Phase 3",
+      "type": "Technology",
+      "description": "Rel-19 Phase 3 of the Common API Framework (CAPIF), which defines how API invokers inside and outside the 3GPP system discover and consume 3GPP APIs. Includes support for additional API management features and tighter integration with NEF and the SCEF.",
+      "summary": "Common API Framework (CAPIF) Phase 3 is the Rel-19 work item continuing the Rel-15/16/17/18 CAPIF evolution. CAPIF defines how API invokers (inside or outside the 3GPP system) discover and consume 3GPP APIs. Phase 3 adds additional API management features, tighter integration with the Network Exposure Function (NEF) and the Service Capability Exposure Function (SCEF), and improved support for vertical industries.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 23.222"]
+    },
+    {
+      "id": "FEATURE_SON_MDT_Ph4",
+      "name": "SON / MDT Phase 4",
+      "type": "Technology",
+      "description": "Rel-19 Phase 4 of Self-Organizing Networks and Minimization of Drive Tests, including support for SON/MDT in NTN scenarios and continuous MDT collection across RRC states for AI/ML training.",
+      "summary": "SON / MDT Phase 4 is the Rel-19 RAN3-led work item continuing the Self-Organizing Networks and Minimization of Drive Tests evolution. It introduces SON/MDT support for NTN scenarios and continuous MDT collection from the same UE across RRC states, providing data for AI/ML model training under the AI/ML for NG-RAN enhancements item.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 28.554", "TS 32.422"]
+    },
+    {
+      "id": "FEATURE_AmbientIoT_RAN",
+      "name": "Solutions for Ambient IoT in NR",
+      "type": "Technology",
+      "parent": "FEATURE_Ambient_IoT",
+      "description": "RAN-side Rel-19 work item that defines the physical-layer and protocol solutions for AmbientIoT devices in NR FR1 FDD spectrum. Two topologies: BS connected directly to a tag, or UE serving as an intermediate node. Both passive backscatter (around 1 microWatt) and active low-power transmission (a few hundred microWatts) are supported.",
+      "summary": "Solutions for Ambient IoT in NR is the RAN counterpart to the AmbientIoT SA/CT work item. It defines the physical-layer waveforms (passive backscatter and active low-power transmissions), medium access, and protocol procedures for AmbientIoT devices operating in NR FR1 FDD licensed spectrum. Two topologies are specified: a base station connected directly to a tag, and a user equipment serving as an intermediate node under network control. The work targets ultra-low-power devices that harvest energy from the ambient environment.",
+      "source_file": "../3GPP-trunked/Rel-19-curated/TR_21.919",
+      "related_specs": ["TS 38.300", "TS 38.331"]
+    }
+  ],
+  "relations": [
+    {
+      "source": "FEATURE_NTN_Ph3",
+      "target": "FEATURE_Regenerative_Payload",
+      "type": "has_subfeature",
+      "description": "NTN Ph3 introduces regenerative payload operation for NR"
+    },
+    {
+      "source": "FEATURE_NTN_Ph3",
+      "target": "FEATURE_NTN_RedCap",
+      "type": "has_subfeature",
+      "description": "NTN Ph3 adds RedCap and enhanced RedCap device support in NR-NTN bands"
+    },
+    {
+      "source": "FEATURE_5GSAT_Ph3",
+      "target": "FEATURE_Regenerative_Payload",
+      "type": "uses",
+      "description": "5GSAT Ph3 leverages regenerative payloads for S&F operation"
+    },
+    {
+      "source": "FEATURE_AI_ML_NG_RAN",
+      "target": "FEATURE_Network_Slicing",
+      "type": "uses",
+      "description": "AI/ML for NG-RAN enhancements includes AI/ML-based network slicing"
+    },
+    {
+      "source": "FEATURE_AI_ML_NG_RAN",
+      "target": "FEATURE_SON_MDT_Ph4",
+      "type": "uses",
+      "description": "AI/ML for NG-RAN consumes continuous MDT data from SON/MDT Ph4"
+    },
+    {
+      "source": "FEATURE_LP_WUS",
+      "target": "FEATURE_Network_Energy_Savings",
+      "type": "complements",
+      "description": "LP-WUS complements the network-side energy saving mechanisms"
+    },
+    {
+      "source": "FEATURE_VMR_Ph2",
+      "target": "FEATURE_5G_NR_Femto",
+      "type": "complements",
+      "description": "VMR Ph2 and 5G NR Femto are complementary topology enhancements"
+    },
+    {
+      "source": "FEATURE_NR_Mobility_Ph4",
+      "target": "FEATURE_XR_AR_Metaverse_Edge",
+      "type": "supports",
+      "description": "Mobility Ph4 (L1/L2 mobility) reduces handover interruption for XR"
+    },
+    {
+      "source": "FEATURE_SBFD",
+      "target": "FEATURE_XR_AR_Metaverse_Edge",
+      "type": "supports",
+      "description": "Sub-band full-duplex reduces latency for XR and edge services"
+    },
+    {
+      "source": "FEATURE_Sidelink",
+      "target": "FEATURE_ProSe_NPN",
+      "type": "uses",
+      "description": "ProSe support in NPN uses the sidelink/PC5 reference point"
+    },
+    {
+      "source": "FEATURE_UPEAS_Ph2",
+      "target": "FEATURE_AI_ML_Management_Ph2",
+      "type": "uses",
+      "description": "UPEAS Ph2 SBA-style exposure helps AI/ML management"
+    }
+  ]
+}

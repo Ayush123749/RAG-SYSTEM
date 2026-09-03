@@ -45,7 +45,10 @@ def chat():
     
     if not user_query:
         return jsonify({"error": "Empty query"}), 400
-    
+
+    if chatbot is None:
+        load_models()
+
     try:
         result = chatbot.query(user_query)
         return jsonify({
